@@ -19,6 +19,7 @@
     <MASM Include="P15_ImpresionNumero.asm" />
     <MASM Include="P16_LecturaNumero.asm" />
     <MASM Include="P17_Promedio3Nums.asm" />
+    <MASM Include="P18_XalCuadrado.asm" />
   </ItemGroup>
   <ItemGroup>
     <Object Include="..\..\..\..\..\..\Irvine\Lib32\Irvine32_Library\Irvine32.obj" />

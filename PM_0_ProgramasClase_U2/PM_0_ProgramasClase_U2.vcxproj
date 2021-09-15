@@ -28,6 +28,7 @@
     <MASM Include="P15_ImpresionNumero.asm" />
     <MASM Include="P16_LecturaNumero.asm" />
     <MASM Include="P17_Promedio3Nums.asm" />
+    <MASM Include="P18_XalCuadrado.asm" />
     <MASM Include="P1_MOV.asm" />
     <MASM Include="P2_MOV_parte2.asm" />
     <MASM Include="P3_MOV_parte3.asm" />
