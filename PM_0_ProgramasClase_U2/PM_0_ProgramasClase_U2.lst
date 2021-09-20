@@ -1,11 +1,11 @@
-Microsoft (R) Macro Assembler Version 14.16.27027.1	    09/15/21 08:20:55
+Microsoft (R) Macro Assembler Version 14.16.27027.1	    09/20/21 08:59:03
 Introduccio						     Page 1 - 1
 
 
 				TITLE Introduccion 
 
 				;DESCRPICIÓN 
-				;Objetivo: Calcular el promedio de tres numeros
+				;Objetivo: Introducción a la instrucción MUL
 				;
 				; Autore(s):
 				;         Mtro. Alejandro Garcia
@@ -36,104 +36,78 @@ Microsoft (R) Macro Assembler Version 14.16.27027.1	    09/15/21 08:20:55
 
  00000000			.data
 				; Área de Declaración de Variables
- 00000000 49 6E 67 72 65	txtCalif_1_p17 db "Ingresa la calificacion 1: ", 0
-	   73 61 20 6C 61
-	   20 63 61 6C 69
-	   66 69 63 61 63
-	   69 6F 6E 20 31
-	   3A 20 00
- 0000001C 49 6E 67 72 65	txtCalif_2_p17 db "Ingresa la calificacion 2: ", 0
-	   73 61 20 6C 61
-	   20 63 61 6C 69
-	   66 69 63 61 63
-	   69 6F 6E 20 32
-	   3A 20 00
- 00000038 49 6E 67 72 65	txtCalif_3_p17 db "Ingresa la calificacion 3: ", 0
-	   73 61 20 6C 61
-	   20 63 61 6C 69
-	   66 69 63 61 63
-	   69 6F 6E 20 33
-	   3A 20 00
+				;
+				;		MUL: Multiplica a dos operandos
+				;
+				;		Sintaxis:  MUL origen
+				;
+				;		La operación se realiza con el operando eax y origen. El resultado se almacena en eax
+				;		de acuerdo con el tipo de dato del operando origen. 
+				;
+				;
+				;		Aplica las mismas caracteristicas que MOV en cuanto al Mismo Tamaño
+				;				de los operandos("Tipo de Dato")
+				;			
+				;		- Movimientos validos:
+				;
+				;					origen -> destino
 
- 00000054 45 6C 20 70 72	txtResul_p17 db "El promedio es: ", 0
-	   6F 6D 65 64 69
-	   6F 20 65 73 3A
-	   20 00
+				;					memoria a registro
+				;					registro a memoria
+				;					registro a registro
+				;					
+
 
  00000000			.code
 
- 00000000				main17 PROC	
+ 00000000				main9 PROC	
 						;Lógica del Programa
+						
+						;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+ 00000000  B8 00000005				mov eax, 5
+
+ 00000005  83 C0 02				add eax, 2
+
+						;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+						;mul 2   ;no puede ser un inmediato el origen
 					
- 00000000  BA 00000000 R			mov edx, offset txtCalif_1_p17
- 00000005  E8 00000000 E			call writestring
- 0000000A  E8 00000000 E			call crlf
+						;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
- 0000000F  E8 00000000 E			call readint   ; eax  ; es correcto, debido a que no hay nada en eax que nos interese
-
- 00000014  BA 0000001C R			mov edx, offset txtCalif_2_p17
- 00000019  E8 00000000 E			call writestring
- 0000001E  E8 00000000 E			call crlf
-
- 00000023  8B D8				mov ebx, eax ; proceso de respaldo de la calificacion 1 en ebx (podria para este ejerccio tambien ser ecx)
-
- 00000025  E8 00000000 E			call readint  ; eax   ; existe un problema, y es que eax contiene la primera calificación ingresada
-											  ; para solucionar el problema, se debe respaldar el valor de eax
-											  ; antes de que se ejecute el procedimiento readint 
-											  
-											  ; El procedimiento de respaldo  se muestra en la linea: 39
-
-						; como ya se tienen dos calificaciones, se puede comenzar a realizar la suma de estas...
-						;add destino, origen ; si el destino es eax (mov eax, ebx), como aun falta una calificación, 
-											 ; entonces me obligaría a tener que respaldar eax de nuevo antes de leer la  calif 
-											 
-											 ; sin embargo, si la suma se almacena en ebx (mov ebx, eax), 
-											 ; no sería necesario respaldar, debido a que los
-											 ; ingresos del usuario se almacenan en eax y no en ebx
-											 ; y el resultado de la suma quedaría intacto
-
- 0000002A  03 D8				add ebx, eax   ; ebx = calif 1 + calif 2
+						; recordar, hasta aqqui, eax vale 7
 
 
- 0000002C  BA 00000038 R			mov edx, offset txtCalif_3_p17
- 00000031  E8 00000000 E			call writestring
- 00000036  E8 00000000 E			call crlf
+						;ecx no esta en este punto inicializo con un valor valido para el programa
+						; sin embargo, por defecto cuenta con un valor. Esto puede llegar a ocasionar algunos
+						; detalles al realizar la multiplicación
 
- 0000003B  E8 00000000 E			call readint   ; no importa que se borre el valor anterior de eax, debido a que este ya fue procesado
-									   ; para realizar la suma y el resultado se encuentra respaldado en ebx
+ 00000008  B1 02				mov cl, 2
 
-						; Se requiere hacer la suma final de todas las calificaciones. En este caso, el resultado
-						; puede almacenarse en eax debido a que es donde se requiere se encuentre ubicado para 
-						; realizar la división 
+ 0000000A  F6 E1				mul cl  ;parte baja de eax --> al, debido a que el operando origen es de 8bits/ 1 byte
+								; -->> al * cl
 
- 00000040  03 C3				add eax, ebx ; eax =  (calif 1 + calif 2) + calif 3
+						;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+ 0000000C  B5 02				mov ch, 2
 
-						;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ 0000000E  F6 E5				mul ch ;-->> al * ch    ....  ESO NO->> ah * ch
 
- 00000042  BA 00000000				mov edx, 0  ; para almacenar el residuo sin problemas
+						; Que el operando sea cl o ch, no significa que se multiplicara sus analogos (al o ah) del operando eax,
+						; sino que se operara con la parte baja de eax (al) debido a que ambas partes son de 8 bits. 
 
- 00000047  B9 00000003				mov ecx, 3  ; divisor
+						; Es decir, que cuando origen sea de :
 
-						; eax = dividendo antes de la división y cociente despues de la division
- 0000004C  F7 F1				div ecx  ; eax / ecx  => eax /3
-
-						;eax = promedio
-
-
- 0000004E  BA 00000054 R			mov edx, offset txtResul_p17
- 00000053  E8 00000000 E			call writestring
- 00000058  E8 00000000 E			call crlf
-
- 0000005D  E8 00000000 E			call writedec
+						;	8 bits, se multiplicara con al
+						;  16 bits, se multiplicara con ax
+						;  32 bits, se multiplicara con eax 
 
 						exit	
 					
- 00000069				main17 ENDP
+ 00000017				main9 ENDP
 					
-					END main17
-
-Microsoft (R) Macro Assembler Version 14.16.27027.1	    09/15/21 08:20:55
+					END main9
+Microsoft (R) Macro Assembler Version 14.16.27027.1	    09/20/21 08:59:03
 Introduccio						     Symbols 2 - 1
 
 
@@ -227,8 +201,8 @@ Segments and Groups:
 
 FLAT . . . . . . . . . . . . . .	GROUP
 STACK  . . . . . . . . . . . . .	32 Bit	 00001000 Para	  Stack	  'STACK'	 
-_DATA  . . . . . . . . . . . . .	32 Bit	 00000065 Para	  Public  'DATA'	
-_TEXT  . . . . . . . . . . . . .	32 Bit	 00000069 Para	  Public  'CODE'	
+_DATA  . . . . . . . . . . . . .	32 Bit	 00000000 Para	  Public  'DATA'	
+_TEXT  . . . . . . . . . . . . .	32 Bit	 00000017 Para	  Public  'CODE'	
 
 
 Procedures, parameters, and locals:
@@ -335,7 +309,7 @@ WriteStackFrame  . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External
 WriteString  . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
 WriteToFile  . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
 WriteWindowsMsg  . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
-main17 . . . . . . . . . . . . .	P Near	 00000000 _TEXT	Length= 00000069 Public STDCALL
+main9  . . . . . . . . . . . . .	P Near	 00000000 _TEXT	Length= 00000017 Public STDCALL
 printf . . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External C
 scanf  . . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External C
 wsprintfA  . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External C
@@ -569,10 +543,6 @@ lightMagenta . . . . . . . . . .	Number	 0000000Dh
 lightRed . . . . . . . . . . . .	Number	 0000000Ch   
 magenta  . . . . . . . . . . . .	Number	 00000005h   
 red  . . . . . . . . . . . . . .	Number	 00000004h   
-txtCalif_1_p17 . . . . . . . . .	Byte	 00000000 _DATA	
-txtCalif_2_p17 . . . . . . . . .	Byte	 0000001C _DATA	
-txtCalif_3_p17 . . . . . . . . .	Byte	 00000038 _DATA	
-txtResul_p17 . . . . . . . . . .	Byte	 00000054 _DATA	
 white  . . . . . . . . . . . . .	Number	 0000000Fh   
 wsprintf . . . . . . . . . . . .	Text   	 wsprintfA
 yellow . . . . . . . . . . . . .	Number	 0000000Eh   

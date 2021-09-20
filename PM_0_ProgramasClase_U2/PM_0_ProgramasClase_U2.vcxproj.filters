@@ -20,6 +20,9 @@
     <MASM Include="P16_LecturaNumero.asm" />
     <MASM Include="P17_Promedio3Nums.asm" />
     <MASM Include="P18_XalCuadrado.asm" />
+    <MASM Include="P19_IntercambioValores.asm" />
+    <MASM Include="P20_SaltosIncondicionales.asm" />
+    <MASM Include="P21_SaltoCondicional_Parte1.asm" />
   </ItemGroup>
   <ItemGroup>
     <Object Include="..\..\..\..\..\..\Irvine\Lib32\Irvine32_Library\Irvine32.obj" />

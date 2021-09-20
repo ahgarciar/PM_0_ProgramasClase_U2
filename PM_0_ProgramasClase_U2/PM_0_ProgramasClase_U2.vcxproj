@@ -29,7 +29,10 @@
     <MASM Include="P16_LecturaNumero.asm" />
     <MASM Include="P17_Promedio3Nums.asm" />
     <MASM Include="P18_XalCuadrado.asm" />
+    <MASM Include="P19_IntercambioValores.asm" />
     <MASM Include="P1_MOV.asm" />
+    <MASM Include="P20_SaltosIncondicionales.asm" />
+    <MASM Include="P21_SaltoCondicional_Parte1.asm" />
     <MASM Include="P2_MOV_parte2.asm" />
     <MASM Include="P3_MOV_parte3.asm" />
     <MASM Include="P4_MOV_parte4.asm" />
@@ -120,7 +123,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <EntryPointSymbol>main17</EntryPointSymbol>
+      <EntryPointSymbol>main21</EntryPointSymbol>
       <ImportLibrary>C:\Irvine</ImportLibrary>
     </Link>
     <MASM>
