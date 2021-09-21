@@ -33,6 +33,9 @@
     <MASM Include="P1_MOV.asm" />
     <MASM Include="P20_SaltosIncondicionales.asm" />
     <MASM Include="P21_SaltoCondicional_Parte1.asm" />
+    <MASM Include="P22_SaltoCondicional_Parte2.asm" />
+    <MASM Include="P23_SaltoCondicional_Parte3.asm" />
+    <MASM Include="P24_SaltoCondicionales_Ej.asm" />
     <MASM Include="P2_MOV_parte2.asm" />
     <MASM Include="P3_MOV_parte3.asm" />
     <MASM Include="P4_MOV_parte4.asm" />
@@ -123,7 +126,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <EntryPointSymbol>main21</EntryPointSymbol>
+      <EntryPointSymbol>main24</EntryPointSymbol>
       <ImportLibrary>C:\Irvine</ImportLibrary>
     </Link>
     <MASM>

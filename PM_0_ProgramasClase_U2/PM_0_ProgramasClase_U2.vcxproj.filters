@@ -23,6 +23,9 @@
     <MASM Include="P19_IntercambioValores.asm" />
     <MASM Include="P20_SaltosIncondicionales.asm" />
     <MASM Include="P21_SaltoCondicional_Parte1.asm" />
+    <MASM Include="P22_SaltoCondicional_Parte2.asm" />
+    <MASM Include="P23_SaltoCondicional_Parte3.asm" />
+    <MASM Include="P24_SaltoCondicionales_Ej.asm" />
   </ItemGroup>
   <ItemGroup>
     <Object Include="..\..\..\..\..\..\Irvine\Lib32\Irvine32_Library\Irvine32.obj" />
