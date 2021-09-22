@@ -44,6 +44,8 @@
     <MASM Include="P7_SUB.asm" />
     <MASM Include="P8_MUL.asm" />
     <MASM Include="P9_MUL_parte2.asm" />
+    <MASM Include="P25_SaltoCond_Ejemplo.asm" />
+    <MASM Include="P_26_SaltosComoCiclos.asm" />
   </ItemGroup>
   <ItemGroup>
     <Object Include="..\..\..\..\..\..\Irvine\Lib32\Irvine32_Library\Irvine32.obj" />
@@ -126,7 +128,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <EntryPointSymbol>main24</EntryPointSymbol>
+      <EntryPointSymbol>main26</EntryPointSymbol>
       <ImportLibrary>C:\Irvine</ImportLibrary>
     </Link>
     <MASM>

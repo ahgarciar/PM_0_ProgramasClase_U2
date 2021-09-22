@@ -1,11 +1,11 @@
-Microsoft (R) Macro Assembler Version 14.16.27027.1	    09/21/21 08:58:07
-Introduccio						     Page 1 - 1
+Microsoft (R) Macro Assembler Version 14.16.27027.1	    09/22/21 08:54:02
+Saltos Condicionale					     Page 1 - 1
 
 
-				TITLE Introduccion 
+				TITLE Saltos Condicionales
 
 				;DESCRPICIÓN 
-				;Objetivo: Introducción a la instrucción MUL
+				;Objetivo: Explicación
 				;
 				; Autore(s):
 				;         Mtro. Alejandro Garcia
@@ -36,79 +36,49 @@ Microsoft (R) Macro Assembler Version 14.16.27027.1	    09/21/21 08:58:07
 
  00000000			.data
 				; Área de Declaración de Variables
-				;
-				;		MUL: Multiplica a dos operandos
-				;
-				;		Sintaxis:  MUL origen
-				;
-				;		La operación se realiza con el operando eax y origen. El resultado se almacena en eax
-				;		de acuerdo con el tipo de dato del operando origen. 
-				;
-				;
-				;		Aplica las mismas caracteristicas que MOV en cuanto al Mismo Tamaño
-				;				de los operandos("Tipo de Dato")
-				;			
-				;		- Movimientos validos:
-				;
-				;					origen -> destino
-
-				;					memoria a registro
-				;					registro a memoria
-				;					registro a registro
-				;					
-
+ 00000000 46 69 6E 20 64	msj1_p26 db "Fin del Programa",0
+	   65 6C 20 50 72
+	   6F 67 72 61 6D
+	   61 00
 
  00000000			.code
-
- 00000000				main9 PROC	
-						;Lógica del Programa
-						
-						;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
- 00000000  B8 00000005				mov eax, 5
-
- 00000005  83 C0 02				add eax, 2
-
-						;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-						;mul 2   ;no puede ser un inmediato el origen
 					
-						;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ 00000000				main26 PROC	
+						;Lógica del Programa
 
-						; recordar, hasta aqqui, eax vale 7
+ 00000000  B8 00000000				mov eax, 0
 
+ 00000005					ciclo:
 
-						;ecx no esta en este punto inicializo con un valor valido para el programa
-						; sin embargo, por defecto cuenta con un valor. Esto puede llegar a ocasionar algunos
-						; detalles al realizar la multiplicación
+ 00000005  E8 00000000 E				call writedec  ; imprime el contenido de eax
+ 0000000A  E8 00000000 E				call crlf
 
- 00000008  B1 02				mov cl, 2
+ 0000000F  83 C0 01					add eax, 1
 
- 0000000A  F6 E1				mul cl  ;parte baja de eax --> al, debido a que el operando origen es de 8bits/ 1 byte
-								; -->> al * cl
-
-						;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
- 0000000C  B5 02				mov ch, 2
-
- 0000000E  F6 E5				mul ch ;-->> al * ch    ....  ESO NO->> ah * ch
-
-						; Que el operando sea cl o ch, no significa que se multiplicara sus analogos (al o ah) del operando eax,
-						; sino que se operara con la parte baja de eax (al) debido a que ambas partes son de 8 bits. 
-
-						; Es decir, que cuando origen sea de :
-
-						;	8 bits, se multiplicara con al
-						;  16 bits, se multiplicara con ax
-						;  32 bits, se multiplicara con eax 
-
+ 00000012  83 F8 08					cmp eax, 8
+ 00000015  7C EE					jl ciclo     ;mientras que eax sea menor que 8, entonces se saltará 
+							
+ 00000017  BA 00000000 R				mov edx, offset msj1_p26
+ 0000001C  E8 00000000 E				call writestring
+						
+						
 						exit	
 					
- 00000017				main9 ENDP
+ 00000028				main26 ENDP
 					
-					END main9
-Microsoft (R) Macro Assembler Version 14.16.27027.1	    09/21/21 08:58:07
-Introduccio						     Symbols 2 - 1
+					END main26
+
+
+					;Unidad 2:
+					;Tarea 1 (Practica 1):  4 programas en documentacion (pendiente) / video (asignacion)
+
+					;Tarea 2. Registro de Banderas   y las banderas más comunes
+					
+					;Tarea 3. Saltos Condicionales con Signo
+
+					;Tarea 4. Saltos Condicionales sin Signo
+Microsoft (R) Macro Assembler Version 14.16.27027.1	    09/22/21 08:54:02
+Saltos Condicionale					     Symbols 2 - 1
 
 
 
@@ -201,8 +171,8 @@ Segments and Groups:
 
 FLAT . . . . . . . . . . . . . .	GROUP
 STACK  . . . . . . . . . . . . .	32 Bit	 00001000 Para	  Stack	  'STACK'	 
-_DATA  . . . . . . . . . . . . .	32 Bit	 00000000 Para	  Public  'DATA'	
-_TEXT  . . . . . . . . . . . . .	32 Bit	 00000017 Para	  Public  'CODE'	
+_DATA  . . . . . . . . . . . . .	32 Bit	 00000011 Para	  Public  'DATA'	
+_TEXT  . . . . . . . . . . . . .	32 Bit	 00000028 Para	  Public  'CODE'	
 
 
 Procedures, parameters, and locals:
@@ -309,7 +279,8 @@ WriteStackFrame  . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External
 WriteString  . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
 WriteToFile  . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
 WriteWindowsMsg  . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
-main9  . . . . . . . . . . . . .	P Near	 00000000 _TEXT	Length= 00000017 Public STDCALL
+main26 . . . . . . . . . . . . .	P Near	 00000000 _TEXT	Length= 00000028 Public STDCALL
+  ciclo  . . . . . . . . . . . .	L Near	 00000005 _TEXT	
 printf . . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External C
 scanf  . . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External C
 wsprintfA  . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External C
@@ -542,6 +513,7 @@ lightGreen . . . . . . . . . . .	Number	 0000000Ah
 lightMagenta . . . . . . . . . .	Number	 0000000Dh   
 lightRed . . . . . . . . . . . .	Number	 0000000Ch   
 magenta  . . . . . . . . . . . .	Number	 00000005h   
+msj1_p26 . . . . . . . . . . . .	Byte	 00000000 _DATA	
 red  . . . . . . . . . . . . . .	Number	 00000004h   
 white  . . . . . . . . . . . . .	Number	 0000000Fh   
 wsprintf . . . . . . . . . . . .	Text   	 wsprintfA
