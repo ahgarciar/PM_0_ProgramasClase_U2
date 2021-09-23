@@ -28,6 +28,7 @@
     <MASM Include="P24_SaltoCondicionales_Ej.asm" />
     <MASM Include="P25_SaltoCond_Ejemplo.asm" />
     <MASM Include="P_26_SaltosComoCiclos.asm" />
+    <MASM Include="P_27_Ciclos_Parte2.asm" />
   </ItemGroup>
   <ItemGroup>
     <Object Include="..\..\..\..\..\..\Irvine\Lib32\Irvine32_Library\Irvine32.obj" />
