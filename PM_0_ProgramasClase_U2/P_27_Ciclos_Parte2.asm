@@ -57,12 +57,12 @@ rest_p27 db "La potencia es: ", 0
 
 		; en este programa: posibles registros > ebx o edx
 
-		mov edx, eax  ; la potencia ahora esta en edx
+		mov ebx, eax  ; la potencia ahora esta en ebx
 
 		mov eax, ecx ; posicionar el numero en eax , que será el registro que nos permitirá
 		; hacer las multiplicaciones
 
-		dec edx  ; 
+		dec ebx  ; 
 
 		ciclo:
 			call writedec	
@@ -71,10 +71,10 @@ rest_p27 db "La potencia es: ", 0
 			mul ecx  ; multiplicar eax con ecx, siendo ecx el numero de origen
 
 
-			;sub edx, 1  ;edx--
-			dec edx     ; edx--
+			;sub ebx, 1  ;ebx--
+			dec ebx     ; ebx--
 
-			cmp edx, 0
+			cmp ebx, 0
 			jg ciclo
 			
 		mov edx, offset rest_p27
