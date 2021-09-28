@@ -49,6 +49,7 @@
     <MASM Include="P_26_SaltosComoCiclos.asm" />
     <MASM Include="P_27_Ciclos_Parte2.asm" />
     <MASM Include="P_29_TablaMultiplicar.asm" />
+    <MASM Include="P_30_LOOP_.asm" />
   </ItemGroup>
   <ItemGroup>
     <Object Include="..\..\..\..\..\..\Irvine\Lib32\Irvine32_Library\Irvine32.obj" />
@@ -131,7 +132,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <EntryPointSymbol>main28</EntryPointSymbol>
+      <EntryPointSymbol>main30</EntryPointSymbol>
       <ImportLibrary>C:\Irvine</ImportLibrary>
     </Link>
     <MASM>
