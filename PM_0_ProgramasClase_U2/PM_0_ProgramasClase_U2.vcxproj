@@ -38,6 +38,7 @@
     <MASM Include="P24_SaltoCondicionales_Ej.asm" />
     <MASM Include="P28_CicloEjemplo.asm" />
     <MASM Include="P2_MOV_parte2.asm" />
+    <MASM Include="P31_LoopNumsPares.asm" />
     <MASM Include="P3_MOV_parte3.asm" />
     <MASM Include="P4_MOV_parte4.asm" />
     <MASM Include="P5_ADD.asm" />
@@ -50,6 +51,11 @@
     <MASM Include="P_27_Ciclos_Parte2.asm" />
     <MASM Include="P_29_TablaMultiplicar.asm" />
     <MASM Include="P_30_LOOP_.asm" />
+    <MASM Include="P_32_CiclosAnidados_parte1.asm" />
+    <MASM Include="P_33_CiclosAnidados_parte2.asm" />
+    <MASM Include="P_34_CiclosAnidados_parte3.asm" />
+    <MASM Include="P_35_UsoVariables_parte1.asm" />
+    <MASM Include="P_36_UsoVariables_parte2.asm" />
   </ItemGroup>
   <ItemGroup>
     <Object Include="..\..\..\..\..\..\Irvine\Lib32\Irvine32_Library\Irvine32.obj" />
@@ -132,7 +138,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <EntryPointSymbol>main30</EntryPointSymbol>
+      <EntryPointSymbol>main36</EntryPointSymbol>
       <ImportLibrary>C:\Irvine</ImportLibrary>
     </Link>
     <MASM>

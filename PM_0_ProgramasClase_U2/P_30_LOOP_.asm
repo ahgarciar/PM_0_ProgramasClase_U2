@@ -21,7 +21,7 @@ INCLUDE Irvine32.inc
 	main30 PROC	
 		;Lógica del Programa
 
-		;LOOP Es una intruscción que nos permite generar ciclos, como si de un 
+		;LOOP Es una instrucción que nos permite generar ciclos, como si de un 
 		; ciclo FOR se tratará.
 
 		; En esta instrucción siempre se corroborá (compara) ECX y se decrementa 
