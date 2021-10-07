@@ -27,6 +27,7 @@ numMayor_p36 dword -1000d
 	main36 PROC	
 		;Lógica del Programa
 
+
 		
 
 		exit	

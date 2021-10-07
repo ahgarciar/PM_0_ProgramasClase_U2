@@ -1,8 +1,8 @@
-Microsoft (R) Macro Assembler Version 14.16.27027.1	    10/05/21 08:39:07
-$Ciclos Anidados con Uso de Variable			     Page 1 - 1
+Microsoft (R) Macro Assembler Version 14.16.27027.1	    10/07/21 08:56:58
+Ciclo							     Page 1 - 1
 
 
-				TITLE Ciclos Anidados con Uso de Variables
+				TITLE Ciclos 
 
 				;DESCRPICIÓN 
 				;Objetivo: Explicación
@@ -36,47 +36,49 @@ $Ciclos Anidados con Uso de Variable			     Page 1 - 1
 
  00000000			.data
 				; Área de Declaración de Variables
- 00000000 00000001		contNum dword 1   ; contador que ira de 1 al 10		
+ 00000000 64 65 73 65 61	msj_p37_pregunta db "desea repetir el ciclo: (1: repetir, 0: salir)", 0 
+	   20 72 65 70 65
+	   74 69 72 20 65
+	   6C 20 63 69 63
+	   6C 6F 3A 20 28
+	   31 3A 20 72 65
+	   70 65 74 69 72
+	   2C 20 30 3A 20
+	   73 61 6C 69 72
+	   29 00
 
  00000000			.code
 					
- 00000000				main35 PROC	
+ 00000000				main37 PROC	
 						;Lógica del Programa
 
-						; SOLUCIÓN DEL PROBLEMA MEDIANTE EL USO DE LA PILA (STACK) y LOOP con Uso de Variables
+ 00000000					ciclo:
 
- 00000000  B9 0000000A				mov ecx, 10 ; contador del ciclo (cuantas iteraciones)
+ 00000000  BA 00000000 R				mov edx, offset msj_p37_pregunta
+ 00000005  E8 00000000 E				call writestring
 
- 00000005					ciclo1:
- 00000005  A1 00000000 R				mov eax, contNum  ; cargamos en el registro eax el valor que será imprimido
+ 0000000A  E8 00000000 E				call crlf
 
- 0000000A  51						push ecx ; guarda el valor de ecx en la pila
+ 0000000F  E8 00000000 E				call readint    ;eax
+
+							;cmp eax, 1
+
+							;jz ciclo  ; si es igual salta
+
+ 00000014  EB EA					jmp ciclo
+
+
 							
-							
- 0000000B  B9 0000000A					mov ecx, 10 ; utiliza el registro ecx como contador para el ciclo 2
-										
-							
- 00000010						ciclo2:
- 00000010  E8 00000000 E					call writedec  ; desplegamos el valor	
- 00000015  E8 00000000 E					call crlf
 
- 0000001A  E2 F4						loop ciclo2
-
- 0000001C  59						pop ecx ; sacamos el ultimo valor guardado en la pila y lo colocamos en ecx
-
- 0000001D  FF 05 00000000 R				inc contNum
-							
- 00000023  E2 E0					loop ciclo1
-						
 						exit	
 					
- 0000002C				main35 ENDP
+ 0000001D				main37 ENDP
 					
-					END main35
+					END main37
 
 					
-Microsoft (R) Macro Assembler Version 14.16.27027.1	    10/05/21 08:39:07
-$Ciclos Anidados con Uso de Variable			     Symbols 2 - 1
+Microsoft (R) Macro Assembler Version 14.16.27027.1	    10/07/21 08:56:58
+Ciclo							     Symbols 2 - 1
 
 
 
@@ -169,8 +171,8 @@ Segments and Groups:
 
 FLAT . . . . . . . . . . . . . .	GROUP
 STACK  . . . . . . . . . . . . .	32 Bit	 00001000 Para	  Stack	  'STACK'	 
-_DATA  . . . . . . . . . . . . .	32 Bit	 00000004 Para	  Public  'DATA'	
-_TEXT  . . . . . . . . . . . . .	32 Bit	 0000002C Para	  Public  'CODE'	
+_DATA  . . . . . . . . . . . . .	32 Bit	 0000002F Para	  Public  'DATA'	
+_TEXT  . . . . . . . . . . . . .	32 Bit	 0000001D Para	  Public  'CODE'	
 
 
 Procedures, parameters, and locals:
@@ -277,9 +279,8 @@ WriteStackFrame  . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External
 WriteString  . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
 WriteToFile  . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
 WriteWindowsMsg  . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
-main35 . . . . . . . . . . . . .	P Near	 00000000 _TEXT	Length= 0000002C Public STDCALL
-  ciclo1 . . . . . . . . . . . .	L Near	 00000005 _TEXT	
-  ciclo2 . . . . . . . . . . . .	L Near	 00000010 _TEXT	
+main37 . . . . . . . . . . . . .	P Near	 00000000 _TEXT	Length= 0000001D Public STDCALL
+  ciclo  . . . . . . . . . . . .	L Near	 00000000 _TEXT	
 printf . . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External C
 scanf  . . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External C
 wsprintfA  . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External C
@@ -501,7 +502,6 @@ WriteConsole . . . . . . . . . .	Text   	 WriteConsoleA
 black  . . . . . . . . . . . . .	Number	 00000000h   
 blue . . . . . . . . . . . . . .	Number	 00000001h   
 brown  . . . . . . . . . . . . .	Number	 00000006h   
-contNum  . . . . . . . . . . . .	DWord	 00000000 _DATA	
 cyan . . . . . . . . . . . . . .	Number	 00000003h   
 exit . . . . . . . . . . . . . .	Text   	 INVOKE ExitProcess,0
 gray . . . . . . . . . . . . . .	Number	 00000008h   
@@ -513,6 +513,7 @@ lightGreen . . . . . . . . . . .	Number	 0000000Ah
 lightMagenta . . . . . . . . . .	Number	 0000000Dh   
 lightRed . . . . . . . . . . . .	Number	 0000000Ch   
 magenta  . . . . . . . . . . . .	Number	 00000005h   
+msj_p37_pregunta . . . . . . . .	Byte	 00000000 _DATA	
 red  . . . . . . . . . . . . . .	Number	 00000004h   
 white  . . . . . . . . . . . . .	Number	 0000000Fh   
 wsprintf . . . . . . . . . . . .	Text   	 wsprintfA
