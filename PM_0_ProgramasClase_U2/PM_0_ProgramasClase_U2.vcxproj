@@ -58,6 +58,7 @@
     <MASM Include="P_36_UsoVariables_parte2.asm" />
     <MASM Include="P_37_DetenerCicloUsuario.asm" />
     <MASM Include="P_38_SwitchCaseSimulado.asm" />
+    <MASM Include="P_39_switchAnidados.asm" />
   </ItemGroup>
   <ItemGroup>
     <Object Include="..\..\..\..\..\..\Irvine\Lib32\Irvine32_Library\Irvine32.obj" />
@@ -140,7 +141,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <EntryPointSymbol>main38</EntryPointSymbol>
+      <EntryPointSymbol>main39</EntryPointSymbol>
       <ImportLibrary>C:\Irvine</ImportLibrary>
     </Link>
     <MASM>
