@@ -95,9 +95,22 @@ msjC_Salir_p39 db "8 - Salir de Configuracion", 0
 		jnz compararRefresco2
 			; es igual a 0
 			;;;;; código necesario para vender el refresco 1.
-
+			
 			mov eax, 1
 			call writedec
+
+			;¿Cuántos refrescos vas a querer...?
+			; -- validar si se puede vender esa cantidad de refrescos
+
+			; --- si se puede vender, entonces
+			;		solicitamos el dinero por los refrescos (pudiera ingresarse por partes)
+			;		se entrega el refresco cuando la cantidad de dinero sea igual o mayor que la necesaria para comprar los refrescos
+			;		se calcula el cambio a entregar
+			;		si se puede entregar el cambio, entonces se entrega y se actualiza el dinero de la maquina
+			;		si no se puede entregar, entonce si al menos queda un refresco del tipo deseado por el usuario
+			;			....se le entrega como cortesía
+			;		si no quedan refrescos en la maquina, y no se le puede dar el cambio, entonces solo se despliega 
+			;			.... un mensaje de disculpa
 
 			;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 			jmp continuar
@@ -176,8 +189,13 @@ msjC_Salir_p39 db "8 - Salir de Configuracion", 0
 
 			cmp eax, 1
 			jnz compararCod2
-				; aqui va el procedimiento cuando sea codigo 1
+				; aqui va el procedimiento cuando sea codigo 1 ; Modificar Cantidad Refresco 1
 				
+				;se le va a preguntar al usuario cuantos refrescos desea añadir (considerando que nuestra
+				; máquina es muy grande y no tiene limite)
+
+				; se añade la cantidad de refrescos indicada por el usuario al tipo de rerfresco 1 
+
 				mov eax, 1
 				call writedec
 				;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -185,7 +203,7 @@ msjC_Salir_p39 db "8 - Salir de Configuracion", 0
 			compararCod2:
 			cmp eax, 2
 			jnz compararCod3
-				; aqui va el procedimiento cuando sea codigo 2
+				; aqui va el procedimiento cuando sea codigo 2 Modificar Cantidad Refresco 2
 				
 				mov eax, 2
 				call writedec
@@ -194,7 +212,7 @@ msjC_Salir_p39 db "8 - Salir de Configuracion", 0
 			compararCod3:
 			cmp eax, 3
 			jnz compararCod4
-				;aqui va el procedimiento cuando sea codigo 3
+				;aqui va el procedimiento cuando sea codigo 3 Modificar Cantidad Refresco 3
 				
 				mov eax, 3
 				call writedec
@@ -203,8 +221,11 @@ msjC_Salir_p39 db "8 - Salir de Configuracion", 0
 			compararCod4:
 			cmp eax, 4
 			jnz compararCod5
-				;aqui va el procedimiento cuando sea codigo 4
+				;aqui va el procedimiento cuando sea codigo 4  Modificacíón del precio del Refresco 1
 				
+				;preguntar al usuario el nuevo precio del refresco
+				; modificar el precio del refreso por el nuevo precio ingresado por el usuario
+
 				mov eax, 4
 				call writedec
 				;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -232,6 +253,9 @@ msjC_Salir_p39 db "8 - Salir de Configuracion", 0
 			jnz compararCod8
 				;aqui va el procedimiento cuando sea codigo 7
 				
+				;preguntar al usuario la nueva cantidad de dinero en la maquina
+				; modificar la cantidad de dinero en la maquina por la cantidad ingresada por el usuario
+
 				mov eax, 7
 				call writedec
 				;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -241,6 +265,8 @@ msjC_Salir_p39 db "8 - Salir de Configuracion", 0
 			jnz noValido
 				;aqui va el procedimiento cuando sea codigo 8
 				
+				; desplegar un mensaje de salida. Ej.  Saliendo del modo de configuración..
+
 				mov eax, 8
 				call writedec
 				;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -263,6 +289,8 @@ msjC_Salir_p39 db "8 - Salir de Configuracion", 0
 			;es igual a 0
 			;;;;; código necesario para comenzar el apagado del sistema.
 
+			; desplegar un mensaje de salida. Ej.  Gracias por usar nuestra máquina..
+
 			mov eax, 200
 			call writedec
 			;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -270,7 +298,7 @@ msjC_Salir_p39 db "8 - Salir de Configuracion", 0
 		codigoNoValido:
 
 			mov eax, 9999
-			call writedec
+			call writedec		
 
 			;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 			jmp continuar
